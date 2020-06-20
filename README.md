@@ -1,1 +1,1 @@
-# Hand-Gesture-Detector_Android
+# Hand-Gesture-Detector-Android
