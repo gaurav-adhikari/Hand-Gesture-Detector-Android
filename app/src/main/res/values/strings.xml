@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">Hand Gesture Detector</string>
+    <string name="Result_txt">The Result will be displayed here</string>
+    <string name="btn_capture">Capture Image</string>
 </resources>
