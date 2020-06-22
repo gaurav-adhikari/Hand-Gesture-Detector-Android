@@ -20,6 +20,9 @@ android {
         }
     }
 
+    aaptOptions {
+        noCompress "tflite"
+    }
 
     // Adding jetpack
     buildFeatures {
@@ -42,7 +45,6 @@ dependencies {
     androidTestImplementation 'androidx.test.ext:junit:1.1.1'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
 
-
     implementation 'com.google.android.material:material:1.1.0'
 
     implementation 'androidx.ui:ui-framework:0.1.0-dev10'
@@ -50,6 +52,8 @@ dependencies {
     implementation 'androidx.ui:ui-layout:0.1.0-dev10'
     implementation 'androidx.ui:ui-material:0.1.0-dev10'
 
-
-
+    //tensorflow implementation
+    implementation 'org.tensorflow:tensorflow-lite:0.0.0-nightly'
+    implementation('org.tensorflow:tensorflow-lite-gpu:0.0.0-nightly')
+    implementation 'org.tensorflow:tensorflow-lite-support:0.0.0-nightly'
 }
