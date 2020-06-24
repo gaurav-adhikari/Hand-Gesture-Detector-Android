@@ -60,9 +60,8 @@ public class ImageClassifier {
                             BYTE_SIZE_OF_FLOAT * DIM_BATCH_SIZE * DIM_IMG_SIZE_X * DIM_IMG_SIZE_Y * DIM_PIXEL_SIZE);
             inputBuffer.order(ByteOrder.nativeOrder());
             mnistOutput = new float[DIM_BATCH_SIZE][NUMBER_LENGTH];
-            Log.d(TAG, "Created a Tensorflow Lite MNIST Classifier.");
         } catch (IOException e) {
-            Log.e(TAG, "IOException loading the tflite file");
+            Log.e(TAG, e.getMessage());
         }
     }
 
@@ -74,7 +73,7 @@ public class ImageClassifier {
 
     public String classify(Bitmap bitmap) {
         if (tflite == null) {
-            Log.e(TAG, "Image classifier has not been initialized; Skipped.");
+            Log.e(TAG, "Image classifier not initialized");
         }
         preprocess(bitmap);
         runInference();
@@ -118,7 +117,6 @@ public class ImageClassifier {
         long declaredLength = fileDescriptor.getDeclaredLength();
         return fileChannel.map(FileChannel.MapMode.READ_ONLY, startOffset, declaredLength);
     }
-
 
     private void preprocess(Bitmap bitmap) {
         if (bitmap == null || inputBuffer == null) {
