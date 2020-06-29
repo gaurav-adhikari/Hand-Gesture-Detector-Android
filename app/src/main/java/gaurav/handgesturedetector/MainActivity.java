@@ -7,6 +7,8 @@ import androidx.core.app.ActivityCompat;
 
 import android.Manifest;
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
@@ -16,6 +18,7 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+import com.google.android.material.appbar.MaterialToolbar;
 import com.google.android.material.button.MaterialButton;
 import com.google.android.material.textview.MaterialTextView;
 
@@ -31,6 +34,7 @@ public class MainActivity extends AppCompatActivity {
     MaterialTextView tv_resulttext;
     MaterialButton btn_capture;
     ImageClassifier imageClassifier;
+    MaterialToolbar toolbar;
 
     private static final int MY_CAMERA_PERMISSION_CODE = 100;
 
@@ -45,12 +49,49 @@ public class MainActivity extends AppCompatActivity {
         tv_resulttext = findViewById(R.id.tv_resulttext);
         btn_capture = findViewById(R.id.btn_capture);
 
+        toolbar = findViewById(R.id.activityToolBar);
+
         btn_capture.setOnClickListener(view -> {
             if (checkSelfPermission(Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED) {
                 requestPermissions(new String[]{Manifest.permission.CAMERA}, MY_CAMERA_PERMISSION_CODE);
             } else {
                 Intent cameraIntent = new Intent(android.provider.MediaStore.ACTION_IMAGE_CAPTURE);
                 startActivityForResult(cameraIntent, CAMERA_REQUEST);
+            }
+        });
+
+
+        toolbar.setOnMenuItemClickListener(menuItem -> {
+            switch (menuItem.getItemId()) {
+
+                case R.id.about:
+
+                    AlertDialog alertDialog = new AlertDialog.Builder(MainActivity.this).create();
+                    alertDialog.setTitle("About");
+                    alertDialog.setMessage("Thank you for using the app\n\n" +
+                            "Developed by Gaurav\n" +
+                            "Developer mail: gaureadhikari@gmail.com");
+                    alertDialog.setButton(AlertDialog.BUTTON_POSITIVE, "Close",
+                            (dialog, which) -> dialog.dismiss());
+                    alertDialog.show();
+
+                    return true;
+
+                case R.id.catalogue:
+
+                    ImageView imageView = new ImageView(this);
+                    imageView.setImageResource(R.drawable.signs);
+                    AlertDialog.Builder builder =
+                            new AlertDialog.Builder(this).
+                                    setTitle("Hand Signs to Try !!").
+                                    setPositiveButton("Close", (dialogInterface, i) -> dialogInterface.dismiss()).
+                                    setView(imageView);
+                    builder.create().show();
+
+                    return true;
+
+                default:
+                    return true;
             }
         });
     }
@@ -85,7 +126,7 @@ public class MainActivity extends AppCompatActivity {
 
             Log.d(TAG, "Found Image = " + guess);
             tv_resulttext.setVisibility(View.VISIBLE);
-            tv_resulttext.setText(String.format("%s %s",getResources().getString(R.string.Result_txt),String.valueOf(guess)));
+            tv_resulttext.setText(String.format("%s %s", getResources().getString(R.string.Result_txt), String.valueOf(guess)));
         }
     }
 
