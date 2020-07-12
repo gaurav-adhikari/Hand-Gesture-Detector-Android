@@ -44,19 +44,34 @@
 
     </androidx.coordinatorlayout.widget.CoordinatorLayout>
 
+
     <com.google.android.material.button.MaterialButton
         android:id="@+id/btn_capture"
         style="?attr/materialButtonOutlinedStyle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="48dp"
+        android:layout_marginTop="36dp"
         android:gravity="center"
         android:text="@string/btn_capture"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.45"
+        app:layout_constraintHorizontal_bias="0.185"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageView_display" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btn_choose"
+        style="?attr/materialButtonOutlinedStyle"
+        android:layout_width="146dp"
+        android:layout_height="49dp"
+        android:layout_marginTop="36dp"
+        android:text="Pick Image "
+        app:layout_constraintBottom_toTopOf="@+id/tv_resulttext"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.56"
+        app:layout_constraintStart_toEndOf="@+id/btn_capture"
+        app:layout_constraintTop_toBottomOf="@+id/imageView_display"
+        app:layout_constraintVertical_bias="0.0" />
 
     <com.google.android.material.textview.MaterialTextView
         android:id="@+id/tv_resulttext"

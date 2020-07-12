@@ -30,9 +30,12 @@ public class MainActivity extends AppCompatActivity {
 
     public static final String TAG = "MainActivity";
     private static final int CAMERA_REQUEST = 1888;
+    private static final int FROM_CAMERA=1;
+    private static final int FROM_GALLERY=2;
+
     ImageView imageView;
     MaterialTextView tv_resulttext;
-    MaterialButton btn_capture;
+    MaterialButton btn_capture,btn_choose;
     ImageClassifier imageClassifier;
     MaterialToolbar toolbar;
 
@@ -48,6 +51,7 @@ public class MainActivity extends AppCompatActivity {
         imageView = findViewById(R.id.imageView_display);
         tv_resulttext = findViewById(R.id.tv_resulttext);
         btn_capture = findViewById(R.id.btn_capture);
+        btn_choose=findViewById(R.id.btn_choose);
 
         toolbar = findViewById(R.id.activityToolBar);
 
@@ -59,6 +63,7 @@ public class MainActivity extends AppCompatActivity {
                 startActivityForResult(cameraIntent, CAMERA_REQUEST);
             }
         });
+
 
 
         toolbar.setOnMenuItemClickListener(menuItem -> {
@@ -129,5 +134,4 @@ public class MainActivity extends AppCompatActivity {
             tv_resulttext.setText(String.format("%s %s", getResources().getString(R.string.Result_txt), String.valueOf(guess)));
         }
     }
-
 }
