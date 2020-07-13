@@ -9,4 +9,4 @@ Hand Gesture Detector is an Andorid application to detect hand signs using custo
 
 ---
   
-![Image of Screenshot](https://github.com/gaurav-adhikari/Hand-Gesture-Detector-Android/blob/master/ScreenshotDemo_HandGestureDetector.jpg)
+<img src="https://github.com/gaurav-adhikari/Hand-Gesture-Detector-Android/blob/master/ScreenshotDemo_HandGestureDetector.jpg" width="300"/><img src="https://github.com/gaurav-adhikari/Hand-Gesture-Detector-Android/blob/master/Screenshot_HandSignsToTry.jpg" width="300"/> 
